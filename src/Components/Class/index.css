@@ -1,0 +1,26 @@
+.custom-datepicker {
+    width: 100%;
+  }
+  
+  .custom-datepicker .MuiInputBase-input {
+    padding: 11px;
+    font-size: 13px;
+  }
+
+
+  .not-assigned {
+    text-decoration: none; /* Remove underline */
+    color: #c50e0e; /* Set the color to a subdued one */
+    cursor: pointer; /* Remove the cursor pointer */
+    /* Add any other styling you want for "Not assign" content */
+  }
+  
+
+  /* MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root */
+
+  .MuiTableCell-root.css-1ex1afd-MuiTableCell-root,
+.MuiTableCell-body.css-1ex1afd-MuiTableCell-root,
+.MuiTableCell-sizeMedium.css-1ex1afd-MuiTableCell-root {
+  padding: 12px !important; 
+
+}

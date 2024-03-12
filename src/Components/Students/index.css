@@ -1,0 +1,26 @@
+.custom-datepicker {
+  width: 100%;
+}
+
+.custom-datepicker .MuiInputBase-input {
+  padding: 11px;
+  font-size: 13px;
+}
+
+
+table .MuiTableCell-root.MuiTableCell-body {
+    padding: 10px !important; 
+}
+
+.page-break{
+  page-break-after: always;
+}
+
+.need{
+  page-break-before: always;
+}
+
+
+/* .MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputAdornedEnd.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+  padding:6px 7px
+} */

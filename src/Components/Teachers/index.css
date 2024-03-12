@@ -1,0 +1,10 @@
+.custom-datepicker {
+    width: 100%;
+  }
+  
+  .custom-datepicker .MuiInputBase-input {
+    padding: 11px;
+    font-size: 13px;
+  }
+  
+ 

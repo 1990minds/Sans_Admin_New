@@ -1,0 +1,37 @@
+.MuiTableCell-root.MuiTableCell-head {
+  background-color: #43468B;
+  color: #fff;
+  padding-left: 5px;
+  padding: 12px;
+ 
+}
+  
+  /* .MuiTextField-root .MuiInput-root {
+    border: 1px solid #ccc;
+  } */
+
+
+  .MuiTableHead-root .MuiTableCell-root:first-child {
+    border-top-left-radius: 12px; /* Adjust the radius as needed */
+  }
+  
+  .MuiTableHead-root .MuiTableCell-root:last-child {
+    border-top-right-radius: 12px; 
+  }
+
+
+  .odd-row {
+    background-color: #f2f2f2;
+  }
+  
+  .even-row {
+    background-color: #ffffff;
+  }
+
+  .odd-row1 {
+    background-color: #E9F2FF; 
+  }
+  
+  .even-row1 {
+    background-color: #ffffff; /* Set the background color for even rows */
+  }
