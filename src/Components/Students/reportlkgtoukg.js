@@ -21,48 +21,182 @@ const PrintComponent = ({ data, termData }) => {
 
 const isPrep = data?.student?.joining_details?.class?.class_name ==="Prep" || data?.student?.joining_details?.class?.class_name === 'Junior KG'
 console.log("first",isPrep)
+ 
+ 
 
-  const cocolastictotal =
-    data?.cotermdata?.conversation?.conversation_total
-    ?.marks + data?.cotermdata?.english?.english_total?.marks +    data?.cotermdata?.handwriting?.handwriting_total
-    ?.marks +  data?.cotermdata?.math_number_concepts
-    ?.math_number_concepts_total?.marks
-     +    data?.cotermdata?.personality_characteristics
-    ?.personality_characteristics_total?.marks + data?.cotermdata?.What_else?.What_else_total?.marks +   data?.cotermdata?.english_worksheets
-    ?.english_worksheets_total?.marks +  data?.cotermdata?.general_knowledge
-    ?.general_knowledge_total?.marks +    data?.cotermdata?.motor_development
-    ?.motor_development_total?.marks + data?.cotermdata?.recitation?.recitation_total
-    ?.marks +  data?.cotermdata?.social_emotional_development
-    ?.social_emotional_development_total?.marks +   data?.cotermdata?.work_habits?.work_habits_total
-    ?.marks + data?.cotermdata?.written_skills?.written_skills_total
-    ?.marks + data?.cotermdata?.abacus?.abacus_total?.marks +   data?.cotermdata?.worksheets?.worksheets_total
-    ?.marks
+ let subjectMarks;
 
+  if (!isPrep) 
+  {
+    subjectMarks = [
+    data?.cotermdata?.written_skills?.hindi?.marks,
+    data?.cotermdata?.abacus?.add_subtract?.marks,
+    data?.cotermdata?.abacus?.able_to_visualise?.marks,
+    data?.cotermdata?.abacus?.clear_with_the_concept?.marks,
+
+    data?.cotermdata?.conversation?.sentences?.marks,
+    data?.cotermdata?.conversation?.confidence?.marks,
+    data?.cotermdata?.english?.listening?.marks,
+    data?.cotermdata?.english?.story_telling?.marks,
+    data?.cotermdata?.english?.narrating?.marks,
+    data?.cotermdata?.handwriting?.guidlines?.marks,
+    data?.cotermdata?.handwriting?.writes_clearly?.marks,data?.cotermdata?.math_number_concepts?.sizes_shape?.marks,
+    data?.cotermdata?.math_number_concepts?.understands_number?.marks,
+    data?.cotermdata?.math_number_concepts?.identify_numbers?.marks,
+    data?.cotermdata?.math_number_concepts?.write_numbers?.marks,
+    data?.cotermdata?.personality_characteristics?.etiquette?.marks,
+    data?.cotermdata?.personality_characteristics?.Interaction?.marks,
+    data?.cotermdata?.personality_characteristics?.participation?.marks,
+    data?.cotermdata?.personality_characteristics?.leadership?.marks,
+    data?.cotermdata?.personality_characteristics?.confidence?.marks,
+    data?.cotermdata?.personality_characteristics?.personal_hygiene?.marks,
+    data?.cotermdata?.What_else?.art_craft?.marks,
+    data?.cotermdata?.What_else?.coloring?.marks,
+    data?.cotermdata?.What_else?.clay_modelling?.marks,
+    data?.cotermdata?.english_worksheets?.Traces_patterns?.marks,
+    data?.cotermdata?.english_worksheets?.upper_case_letters?.marks,
+    data?.cotermdata?.english_worksheets?.lower_case_letters?.marks,
+    data?.cotermdata?.english_worksheets?.writes_clearly?.marks,
+    data?.cotermdata?.general_knowledge?.facts_with_interest?.marks,
+    data?.cotermdata?.general_knowledge?.awareness?.marks,
+    data?.cotermdata?.general_knowledge?.enquiring_mind?.marks,
+    data?.cotermdata?.general_knowledge?.answering_questions?.marks,
+    data?.cotermdata?.motor_development?.color_within_shapes?.marks,
+    data?.cotermdata?.motor_development?.free_hand_pictures?.marks,
+    data?.cotermdata?.motor_development?.handwriting?.marks,
+    data?.cotermdata?.motor_development?.hand_work?.marks,
+    data?.cotermdata?.motor_development?.games?.marks,
+    data?.cotermdata?.recitation?.expression_and_confidence?.marks,
+    data?.cotermdata?.recitation?.poem_rhymes?.marks,
+    data?.cotermdata?.social_emotional_development?.coming_to_school?.marks,
+    data?.cotermdata?.social_emotional_development?.children?.marks,
+    data?.cotermdata?.social_emotional_development?.shares_with_others?.marks,
+    data?.cotermdata?.social_emotional_development?.other_speak?.marks,
+    data?.cotermdata?.social_emotional_development?.accepts_responsibilities?.marks,
+    data?.cotermdata?.work_habits?.neat_tidy?.marks,
+    data?.cotermdata?.work_habits?.home_work?.marks,
+    data?.cotermdata?.work_habits?.school_on_time?.marks,
+    data?.cotermdata?.work_habits?.independently?.marks,
+    data?.cotermdata?.work_habits?.book_materials?.marks,
+    data?.cotermdata?.work_habits?.work_in_the_given_time?.marks,
+    data?.cotermdata?.work_habits?.neatness?.marks,
+    data?.cotermdata?.worksheets?.english?.marks,
+    data?.cotermdata?.worksheets?.math?.marks,
+    data?.cotermdata?.worksheets?.shapes_color?.marks,
+    data?.cotermdata?.written_skills?.literacy?.marks,
+    data?.cotermdata?.written_skills?.numeracy?.marks,
+    data?.cotermdata?.written_skills?.E_V_S?.marks,
+    data?.cotermdata?.written_skills?.kit_activity?.marks, 
+    ]
   
-    const cocolasticgrade =  (cocolastictotal) => {
-      if(!isPrep){
-        if (cocolastictotal >= 522) {
-          return "A+";
-        } else if (cocolastictotal >= 464) {
-          return "A";
-        } else if (cocolastictotal >= 406) {
-          return "B+";
-        } else if (cocolastictotal >= 348) {
-          return "B";
-        } else if (cocolastictotal >= 290) {
-          return "C+";
-        } else if (cocolastictotal >= 232) {
-          return "C";
-        } else if (cocolastictotal >= 174) {
-          return "D+";
-        } else if (cocolastictotal >= 116) {
-          return "D";
-        } else {
-          return "E";
-        }
+
+    console.log(subjectMarks)
+  }
+  else{
+ 
+  subjectMarks = [
+    data?.cotermdata?.conversation?.sentences?.marks,
+    data?.cotermdata?.conversation?.confidence?.marks,
+    data?.cotermdata?.english?.listening?.marks,
+    data?.cotermdata?.english?.story_telling?.marks,
+    data?.cotermdata?.english?.narrating?.marks,
+    data?.cotermdata?.handwriting?.guidlines?.marks,
+    data?.cotermdata?.handwriting?.writes_clearly?.marks,data?.cotermdata?.math_number_concepts?.sizes_shape?.marks,
+    data?.cotermdata?.math_number_concepts?.understands_number?.marks,
+    data?.cotermdata?.math_number_concepts?.identify_numbers?.marks,
+    data?.cotermdata?.math_number_concepts?.write_numbers?.marks,
+    data?.cotermdata?.personality_characteristics?.etiquette?.marks,
+    data?.cotermdata?.personality_characteristics?.Interaction?.marks,
+    data?.cotermdata?.personality_characteristics?.participation?.marks,
+    data?.cotermdata?.personality_characteristics?.leadership?.marks,
+    data?.cotermdata?.personality_characteristics?.confidence?.marks,
+    data?.cotermdata?.personality_characteristics?.personal_hygiene?.marks,
+    data?.cotermdata?.What_else?.art_craft?.marks,
+    data?.cotermdata?.What_else?.coloring?.marks,
+    data?.cotermdata?.What_else?.clay_modelling?.marks,
+    data?.cotermdata?.english_worksheets?.Traces_patterns?.marks,
+    data?.cotermdata?.english_worksheets?.upper_case_letters?.marks,
+    data?.cotermdata?.english_worksheets?.lower_case_letters?.marks,
+    data?.cotermdata?.english_worksheets?.writes_clearly?.marks,
+    data?.cotermdata?.general_knowledge?.facts_with_interest?.marks,
+    data?.cotermdata?.general_knowledge?.awareness?.marks,
+    data?.cotermdata?.general_knowledge?.enquiring_mind?.marks,
+    data?.cotermdata?.general_knowledge?.answering_questions?.marks,
+    data?.cotermdata?.motor_development?.color_within_shapes?.marks,
+    data?.cotermdata?.motor_development?.free_hand_pictures?.marks,
+    data?.cotermdata?.motor_development?.handwriting?.marks,
+    data?.cotermdata?.motor_development?.hand_work?.marks,
+    data?.cotermdata?.motor_development?.games?.marks,
+    data?.cotermdata?.recitation?.expression_and_confidence?.marks,
+    data?.cotermdata?.recitation?.poem_rhymes?.marks,
+    data?.cotermdata?.social_emotional_development?.coming_to_school?.marks,
+    data?.cotermdata?.social_emotional_development?.children?.marks,
+    data?.cotermdata?.social_emotional_development?.shares_with_others?.marks,
+    data?.cotermdata?.social_emotional_development?.other_speak?.marks,
+    data?.cotermdata?.social_emotional_development?.accepts_responsibilities?.marks,
+    data?.cotermdata?.work_habits?.neat_tidy?.marks,
+    data?.cotermdata?.work_habits?.home_work?.marks,
+    data?.cotermdata?.work_habits?.school_on_time?.marks,
+    data?.cotermdata?.work_habits?.independently?.marks,
+    data?.cotermdata?.work_habits?.book_materials?.marks,
+    data?.cotermdata?.work_habits?.work_in_the_given_time?.marks,
+    data?.cotermdata?.work_habits?.neatness?.marks,
+    data?.cotermdata?.worksheets?.english?.marks,
+    data?.cotermdata?.worksheets?.math?.marks,
+    data?.cotermdata?.worksheets?.shapes_color?.marks,
+    data?.cotermdata?.written_skills?.literacy?.marks,
+    data?.cotermdata?.written_skills?.numeracy?.marks,
+    data?.cotermdata?.written_skills?.E_V_S?.marks,
+    data?.cotermdata?.written_skills?.kit_activity?.marks, 
+  ];
+ 
+  console.log(subjectMarks)
+}
+  
+  // Counting the number of subjects excluding "NT" marks and including "AB" marks
+  const subjectCount = subjectMarks.reduce((count, marks) => {
+    if (marks !== "NT" && marks !== 11) {
+      // If marks are numeric or "AB", increment the count
+      count++;
+    }
+    return count;
+  }, 0);
+  
+  // Calculating the total marks considering only numeric marks and "AB" marks
+  const cocolastictotal = subjectMarks.reduce((total, marks) => {
+    if (marks !== "NT" && marks !== 11) {
+      // If marks are numeric or "AB", add them to the total
+      total += marks === "AB" ? 10 : parseInt(marks);
+    }
+    return total;
+  }, 0);
+  
+  // Calculating percentage
+  const perCocal = ((cocolastictotal / (subjectCount * 10)) * 100).toFixed(2);
+  
+  const cocolasticgrade = (cocolastictotal) => {
+    if (!isPrep) {
+      if (cocolastictotal >= 522) {
+        return "A+";
+      } else if (cocolastictotal >= 464) {
+        return "A";
+      } else if (cocolastictotal >= 406) {
+        return "B+";
+      } else if (cocolastictotal >= 348) {
+        return "B";
+      } else if (cocolastictotal >= 290) {
+        return "C+";
+      } else if (cocolastictotal >= 232) {
+        return "C";
+      } else if (cocolastictotal >= 174) {
+        return "D+";
+      } else if (cocolastictotal >= 116) {
+        return "D";
+      } else {
+        return "E";
       }
-      else{
-         if (cocolastictotal >= 486) {
+    } else {
+      if (cocolastictotal >= 486) {
         return "A+";
       } else if (cocolastictotal >= 432) {
         return "A";
@@ -80,13 +214,13 @@ console.log("first",isPrep)
         return "D";
       } else {
         return "E";
-      }}
-     
-    };
-    
-
+      }
+    }
+  
+  };
+  
   const gradetotal = cocolasticgrade(cocolastictotal);
-  const perCocal = isPrep ? ((cocolastictotal / 540) * 100).toFixed(2) : ((cocolastictotal / 580) * 100).toFixed(2)
+  
 
   const getGradeColor = (grade) => {
     switch (grade) {
@@ -108,6 +242,8 @@ console.log("first",isPrep)
         return "bg-[#C62026] text-white font-bold";
       case "E":
         return "bg-[#6E2312] text-white font-bold";
+        case "AB":
+          return "bg-[#6E2312] text-white font-bold";
       default:
         return "bg-white text-black font-bold";
     }
@@ -132,7 +268,10 @@ console.log("first",isPrep)
       return "bg-[#C62026] text-white font-bold";
     } else if (score >= 0 && score <= 1.9) {
       return "bg-[#6E2312] text-white font-bold";
-    } else {
+    } 
+    else if (score == 11 || score == 12) {
+      return "bg-[#6E2312] text-white font-bold";
+    }else {
       return "  font-bold";
     }
   };
@@ -264,6 +403,7 @@ console.log("first",isPrep)
               </span>
          
             </div>
+
             <div>
               <p className="bg-blue-400 text-white mb-1 ">
                 &nbsp;ACADEMIC PERFORMANCE
@@ -344,7 +484,7 @@ console.log("first",isPrep)
                       <td className="border-2 border-gray-600  text-center relative">
                         <div
                           className={`absolute top-0 left-0 bottom-0 ${getScoreColor(
-                            data?.cotermdata?.conversation?.sentences?.marks
+                            data?.cotermdata?.conversation?.sentences?.marks 
                           )}`}
                           style={{
                             left: "10%",
@@ -354,13 +494,13 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.conversation?.sentences?.marks}
+                          {(data?.cotermdata?.conversation?.sentences?.marks == 12) ? "AB" : (data?.cotermdata?.conversation?.sentences?.marks == 11) ? "NT" : (data?.cotermdata?.conversation?.sentences?.marks)}
                         </span>
                       </td>
                       <td className="border-2 border-gray-600 text-center relative">
                         <div
                           className={`absolute top-0 left-0 bottom-0 ${getGradeColor(
-                            data?.cotermdata?.conversation?.sentences?.grade
+                            data?.cotermdata?.conversation?.sentences?.grade 
                           )}`}
                           style={{
                             left: "10%",
@@ -370,7 +510,7 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.conversation?.sentences?.grade}
+                          { data?.cotermdata?.conversation?.sentences?.grade }
                         </span>
                       </td>
                     </tr>
@@ -391,7 +531,7 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.conversation?.confidence?.marks}
+                        {(data?.cotermdata?.conversation?.confidence?.marks == 12) ? "AB" : (data?.cotermdata?.conversation?.confidence?.marks == 11) ? "NT" : (data?.cotermdata?.conversation?.confidence?.marks)}
                         </span>
                       </td>
                       <td
@@ -414,6 +554,7 @@ console.log("first",isPrep)
                       </td>
                     </tr>
                   </tbody>
+
                   <tbody className="text-sm">
                     <tr className="bg-gray-200">
                       <td className="border-2 border-gray-600 font-semibold ">
@@ -472,8 +613,8 @@ console.log("first",isPrep)
                             bottom: "10%",
                           }}
                         ></div>
-                        <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.english?.listening?.marks}
+                        <span className="relative z-10 font-bold text-white">                 
+                          {(data?.cotermdata?.english?.listening?.marks == 12) ? "AB" : (data?.cotermdata?.english?.listening?.marks == 11) ? "NT" : (data?.cotermdata?.english?.listening?.marks)}
                         </span>
                       </td>
                       <td
@@ -514,7 +655,7 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.english?.story_telling?.marks}
+                        {(data?.cotermdata?.english?.story_telling?.marks == 12) ? "AB" : (data?.cotermdata?.english?.story_telling?.marks == 11) ? "NT" : (data?.cotermdata?.english?.story_telling?.marks)}                         
                         </span>
                       </td>
 
@@ -553,7 +694,7 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.english?.narrating?.marks}
+                        {(data?.cotermdata?.english?.narrating?.marks == 12) ? "AB" : (data?.cotermdata?.english?.narrating?.marks == 11) ? "NT" : (data?.cotermdata?.english?.narrating?.marks)}   
                         </span>
                       </td>
 
@@ -575,6 +716,7 @@ console.log("first",isPrep)
                       </td>
                     </tr>
                   </tbody>
+
                   <tbody className="text-sm">
                     <tr className="bg-gray-200">
                       <td className="border-2 border-gray-600 font-semibold">
@@ -638,7 +780,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.handwriting?.guidlines?.marks}
+                       
+                        {(data?.cotermdata?.handwriting?.guidlines?.marks == 12) ? "AB" : (data?.cotermdata?.handwriting?.guidlines?.marks == 11) ? "NT" : (data?.cotermdata?.handwriting?.guidlines?.marks)}   
+
                         </span>
                       </td>
 
@@ -676,7 +820,8 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.handwriting?.writes_clearly?.marks}
+                        {(data?.cotermdata?.handwriting?.writes_clearly?.marks == 12) ? "AB" : (data?.cotermdata?.handwriting?.writes_clearly?.marks == 11) ? "NT" : (data?.cotermdata?.handwriting?.writes_clearly?.marks)}   
+                       
                         </span>
                       </td>
 
@@ -698,6 +843,7 @@ console.log("first",isPrep)
                       </td>
                     </tr>
                   </tbody>
+
                   <tbody className="text-sm">
                     <tr className="bg-gray-200">
                       <td className="border-2 border-gray-600 font-semibold">
@@ -762,10 +908,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.math_number_concepts?.sizes_shape
-                              ?.marks
-                          }
+                        
+                        {(data?.cotermdata?.math_number_concepts?.sizes_shape?.marks == 12) ? "AB" : (data?.cotermdata?.math_number_concepts?.sizes_shape?.marks == 11) ? "NT" : (data?.cotermdata?.math_number_concepts?.sizes_shape?.marks)}   
+
                         </span>
                       </td>
 
@@ -808,10 +953,8 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.math_number_concepts
-                              ?.understands_number?.marks
-                          }
+                        {(data?.cotermdata?.math_number_concepts?.understands_number?.marks == 12) ? "AB" : (data?.cotermdata?.math_number_concepts?.understands_number?.marks == 11) ? "NT" : (data?.cotermdata?.math_number_concepts?.understands_number?.marks)}   
+                         
                         </span>
                       </td>
 
@@ -855,11 +998,8 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.math_number_concepts
-                              ?.identify_numbers
-?.marks
-                          }
+                        {(data?.cotermdata?.math_number_concepts?.identify_numbers?.marks == 12) ? "AB" : (data?.cotermdata?.math_number_concepts?.identify_numbers?.marks == 11) ? "NT" : (data?.cotermdata?.math_number_concepts?.identify_numbers?.marks)}   
+                         
                         </span>
                       </td>
 
@@ -904,10 +1044,8 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.math_number_concepts
-                              ?.write_numbers?.marks
-                          }
+                        {(data?.cotermdata?.math_number_concepts?.write_numbers?.marks == 12) ? "AB" : (data?.cotermdata?.math_number_concepts?.write_numbers?.marks == 11) ? "NT" : (data?.cotermdata?.math_number_concepts?.write_numbers?.marks)}   
+                        
                         </span>
                       </td>
 
@@ -933,6 +1071,7 @@ console.log("first",isPrep)
                       </td>
                     </tr>
                   </tbody>
+
                   <tbody className="text-sm">
                     <tr className="bg-gray-200">
                       <td className="border-2 border-gray-600 font-semibold">
@@ -997,10 +1136,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.personality_characteristics
-                              ?.etiquette?.marks
-                          }
+                     
+                        {(data?.cotermdata?.personality_characteristics?.etiquette?.marks == 12) ? "AB" : (data?.cotermdata?.personality_characteristics?.etiquette?.marks == 11) ? "NT" : (data?.cotermdata?.personality_characteristics?.etiquette?.marks)}   
+
                         </span>
                       </td>
 
@@ -1043,10 +1181,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.personality_characteristics
-                              ?.Interaction?.marks
-                          }
+                         
+                        {(data?.cotermdata?.personality_characteristics?.Interaction?.marks == 12) ? "AB" : (data?.cotermdata?.personality_characteristics?.Interaction?.marks == 11) ? "NT" : (data?.cotermdata?.personality_characteristics?.Interaction?.marks)}   
+
                         </span>
                       </td>
 
@@ -1089,10 +1226,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.personality_characteristics
-                              ?.participation?.marks
-                          }
+                         
+                        {(data?.cotermdata?.personality_characteristics?.participation?.marks == 12) ? "AB" : (data?.cotermdata?.personality_characteristics?.participation?.marks == 11) ? "NT" : (data?.cotermdata?.personality_characteristics?.participation?.marks)}   
+
                         </span>
                       </td>
 
@@ -1133,10 +1269,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.personality_characteristics
-                              ?.leadership?.marks
-                          }
+                         
+                        {(data?.cotermdata?.personality_characteristics?.leadership?.marks == 12) ? "AB" : (data?.cotermdata?.personality_characteristics?.leadership?.marks == 11) ? "NT" : (data?.cotermdata?.personality_characteristics?.leadership?.marks)}   
+
                         </span>
                       </td>
 
@@ -1177,10 +1312,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.personality_characteristics
-                              ?.confidence?.marks
-                          }
+                       
+                        {(data?.cotermdata?.personality_characteristics?.confidence?.marks == 12) ? "AB" : (data?.cotermdata?.personality_characteristics?.confidence?.marks == 11) ? "NT" : (data?.cotermdata?.personality_characteristics?.confidence?.marks)}   
+
                         </span>
                       </td>
 
@@ -1223,10 +1357,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.personality_characteristics
-                              ?.personal_hygiene?.marks
-                          }
+                        
+                        {(data?.cotermdata?.personality_characteristics?.personal_hygiene?.marks == 12) ? "AB" : (data?.cotermdata?.personality_characteristics?.personal_hygiene?.marks == 11) ? "NT" : (data?.cotermdata?.personality_characteristics?.personal_hygiene?.marks)}   
+
                         </span>
                       </td>
 
@@ -1252,6 +1385,7 @@ console.log("first",isPrep)
                       </td>
                     </tr>
                   </tbody>
+
                   <tbody className="text-sm">
                     <tr className="bg-gray-200">
                       <td className="border-2 border-gray-600 font-semibold">
@@ -1305,7 +1439,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.What_else?.art_craft?.marks}
+                        
+                        {(data?.cotermdata?.What_else?.art_craft?.marks == 12) ? "AB" : (data?.cotermdata?.What_else?.art_craft?.marks == 11) ? "NT" : (data?.cotermdata?.What_else?.art_craft?.marks)}   
+
                         </span>
                       </td>
 
@@ -1343,7 +1479,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.What_else?.coloring?.marks}
+                       
+                        {(data?.cotermdata?.What_else?.coloring?.marks == 12) ? "AB" : (data?.cotermdata?.What_else?.coloring?.marks == 11) ? "NT" : (data?.cotermdata?.What_else?.coloring?.marks)}   
+
                         </span>
                       </td>
 
@@ -1381,7 +1519,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.What_else?.clay_modelling?.marks}
+                        
+                        {(data?.cotermdata?.What_else?.clay_modelling?.marks == 12) ? "AB" : (data?.cotermdata?.What_else?.clay_modelling?.marks == 11) ? "NT" : (data?.cotermdata?.What_else?.clay_modelling?.marks)}   
+
                         </span>
                       </td>
 
@@ -1487,10 +1627,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.english_worksheets
-                              ?.Traces_patterns?.marks
-                          }
+                        
+                        {(data?.cotermdata?.english_worksheets?.Traces_patterns?.marks == 12) ? "AB" : (data?.cotermdata?.english_worksheets?.Traces_patterns?.marks == 11) ? "NT" : (data?.cotermdata?.english_worksheets?.Traces_patterns?.marks)}   
+
                         </span>
                       </td>
 
@@ -1533,10 +1672,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.english_worksheets
-                              ?.upper_case_letters?.marks
-                          }
+                        
+                        {(data?.cotermdata?.english_worksheets?.upper_case_letters?.marks == 12) ? "AB" : (data?.cotermdata?.english_worksheets?.upper_case_letters?.marks == 11) ? "NT" : (data?.cotermdata?.english_worksheets?.upper_case_letters?.marks)}   
+
                         </span>
                       </td>
 
@@ -1579,10 +1717,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.english_worksheets
-                              ?.lower_case_letters?.marks
-                          }
+                        
+                        {(data?.cotermdata?.english_worksheets?.lower_case_letters?.marks == 12) ? "AB" : (data?.cotermdata?.english_worksheets?.lower_case_letters?.marks == 11) ? "NT" : (data?.cotermdata?.english_worksheets?.lower_case_letters?.marks)}   
+
                         </span>
                       </td>
 
@@ -1625,10 +1762,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.english_worksheets?.writes_clearly
-                              ?.marks
-                          }
+                        
+                        {(data?.cotermdata?.english_worksheets?.writes_clearly?.marks == 12) ? "AB" : (data?.cotermdata?.english_worksheets?.writes_clearly?.marks == 11) ? "NT" : (data?.cotermdata?.english_worksheets?.writes_clearly?.marks)}   
+
                         </span>
                       </td>
 
@@ -1718,10 +1854,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.general_knowledge
-                              ?.facts_with_interest?.marks
-                          }
+                        
+                        {(data?.cotermdata?.general_knowledge?.facts_with_interest?.marks == 12) ? "AB" : (data?.cotermdata?.general_knowledge?.facts_with_interest?.marks == 11) ? "NT" : (data?.cotermdata?.general_knowledge?.facts_with_interest?.marks)}   
+
                         </span>
                       </td>
 
@@ -1764,10 +1899,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.general_knowledge?.awareness
-                              ?.marks
-                          }
+                         
+                        {(data?.cotermdata?.general_knowledge?.awareness?.marks == 12) ? "AB" : (data?.cotermdata?.general_knowledge?.awareness?.marks == 11) ? "NT" : (data?.cotermdata?.general_knowledge?.awareness?.marks)}   
+
                         </span>
                       </td>
                       <td className="border-2 border-gray-600 text-center relative">
@@ -1809,10 +1943,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.general_knowledge?.enquiring_mind
-                              ?.marks
-                          }
+                         
+                        {(data?.cotermdata?.general_knowledge?.enquiring_mind?.marks == 12) ? "AB" : (data?.cotermdata?.general_knowledge?.enquiring_mind?.marks == 11) ? "NT" : (data?.cotermdata?.general_knowledge?.enquiring_mind?.marks)}   
+
                         </span>
                       </td>
 
@@ -1855,10 +1988,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.general_knowledge
-                              ?.answering_questions?.marks
-                          }
+                       
+                        {(data?.cotermdata?.general_knowledge?.answering_questions?.marks == 12) ? "AB" : (data?.cotermdata?.general_knowledge?.answering_questions?.marks == 11) ? "NT" : (data?.cotermdata?.general_knowledge?.answering_questions?.marks)}   
+
                         </span>
                       </td>
 
@@ -1948,10 +2080,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.motor_development
-                              ?.color_within_shapes?.marks
-                          }
+                        
+                        {(data?.cotermdata?.motor_development?.color_within_shapes?.marks == 12) ? "AB" : (data?.cotermdata?.motor_development?.color_within_shapes?.marks == 11) ? "NT" : (data?.cotermdata?.motor_development?.color_within_shapes?.marks)}   
+
                         </span>
                       </td>
 
@@ -1994,10 +2125,8 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.motor_development
-                              ?.free_hand_pictures?.marks
-                          }
+                        {(data?.cotermdata?.motor_development?.free_hand_pictures?.marks == 12) ? "AB" : (data?.cotermdata?.motor_development?.free_hand_pictures?.marks == 11) ? "NT" : (data?.cotermdata?.motor_development?.free_hand_pictures?.marks)}   
+                         
                         </span>
                       </td>
 
@@ -2015,10 +2144,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.motor_development
-                              ?.free_hand_pictures?.grade
-                          }
+                        
+                        {data?.cotermdata?.motor_development?.free_hand_pictures?.grade  }   
+
                         </span>
                       </td>
                     </tr>
@@ -2038,10 +2166,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.motor_development?.handwriting
-                              ?.marks
-                          }
+                        
+                        {(data?.cotermdata?.motor_development?.handwriting?.marks == 12) ? "AB" : (data?.cotermdata?.motor_development?.handwriting?.marks == 11) ? "NT" : (data?.cotermdata?.motor_development?.handwriting?.marks)}   
+
                         </span>
                       </td>
 
@@ -2082,10 +2209,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.motor_development?.hand_work
-                              ?.marks
-                          }
+                         
+                        {(data?.cotermdata?.motor_development?.hand_work?.marks == 12) ? "AB" : (data?.cotermdata?.motor_development?.hand_work?.marks == 11) ? "NT" : (data?.cotermdata?.motor_development?.hand_work?.marks)}   
+
                         </span>
                       </td>
 
@@ -2125,7 +2251,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.motor_development?.games?.marks}
+                        
+                        {(data?.cotermdata?.motor_development?.games?.marks == 12) ? "AB" : (data?.cotermdata?.motor_development?.games?.marks == 11) ? "NT" : (data?.cotermdata?.motor_development?.games?.marks)}   
+
                         </span>
                       </td>
 
@@ -2211,10 +2339,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.recitation
-                              ?.expression_and_confidence?.marks
-                          }
+                        
+                        {(data?.cotermdata?.recitation?.expression_and_confidence?.marks == 12) ? "AB" : (data?.cotermdata?.recitation?.expression_and_confidence?.marks == 11) ? "NT" : (data?.cotermdata?.recitation?.expression_and_confidence?.marks)}   
+
                         </span>
                       </td>
 
@@ -2256,7 +2383,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {data?.cotermdata?.recitation?.poem_rhymes?.marks}
+                        
+                        {(data?.cotermdata?.recitation?.poem_rhymes?.marks == 12) ? "AB" : (data?.cotermdata?.recitation?.poem_rhymes?.marks == 11) ? "NT" : (data?.cotermdata?.recitation?.poem_rhymes?.marks)}   
+
                         </span>
                       </td>
 
@@ -2342,10 +2471,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.social_emotional_development
-                              ?.coming_to_school?.marks
-                          }
+                        
+                        {(data?.cotermdata?.social_emotional_development?.coming_to_school?.marks == 12) ? "AB" : (data?.cotermdata?.social_emotional_development?.coming_to_school?.marks == 11) ? "NT" : (data?.cotermdata?.social_emotional_development?.coming_to_school?.marks)}   
+
                         </span>
                       </td>
 
@@ -2388,10 +2516,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.social_emotional_development
-                              ?.children?.marks
-                          }
+                        
+                        {(data?.cotermdata?.social_emotional_development?.children?.marks == 12) ? "AB" : (data?.cotermdata?.social_emotional_development?.children?.marks == 11) ? "NT" : (data?.cotermdata?.social_emotional_development?.children?.marks)}   
+
                         </span>
                       </td>
 
@@ -2434,10 +2561,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.social_emotional_development
-                              ?.shares_with_others?.marks
-                          }
+                       
+                        {(data?.cotermdata?.social_emotional_development?.shares_with_others?.marks == 12) ? "AB" : (data?.cotermdata?.social_emotional_development?.shares_with_others?.marks == 11) ? "NT" : (data?.cotermdata?.social_emotional_development?.shares_with_others?.marks)}   
+
                         </span>
                       </td>
 
@@ -2480,10 +2606,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.social_emotional_development
-                              ?.other_speak?.marks
-                          }
+                        
+                        {(data?.cotermdata?.social_emotional_development?.other_speak?.marks == 12) ? "AB" : (data?.cotermdata?.social_emotional_development?.other_speak?.marks == 11) ? "NT" : (data?.cotermdata?.social_emotional_development?.other_speak?.marks)}   
+
                         </span>
                       </td>
                       <td className="border-2 border-gray-600 text-center relative">
@@ -2525,10 +2650,9 @@ console.log("first",isPrep)
                           }}
                         ></div>
                         <span className="relative z-10 font-bold text-white">
-                          {
-                            data?.cotermdata?.social_emotional_development
-                              ?.accepts_responsibilities?.marks
-                          }
+                        
+                        {(data?.cotermdata?.social_emotional_development?.accepts_responsibilities?.marks == 12) ? "AB" : (data?.cotermdata?.social_emotional_development?.accepts_responsibilities?.marks == 11) ? "NT" : (data?.cotermdata?.social_emotional_development?.accepts_responsibilities?.marks)}   
+
                         </span>
                       </td>
                       <td className="border-2 border-gray-600 text-center relative">
@@ -2676,7 +2800,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.work_habits?.neat_tidy?.marks}
+                      
+                        {(data?.cotermdata?.work_habits?.neat_tidy?.marks == 12) ? "AB" : (data?.cotermdata?.work_habits?.neat_tidy?.marks == 11) ? "NT" : (data?.cotermdata?.work_habits?.neat_tidy?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -2713,7 +2839,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.work_habits?.home_work?.marks}
+                      
+                        {(data?.cotermdata?.work_habits?.home_work?.marks == 12) ? "AB" : (data?.cotermdata?.work_habits?.home_work?.marks == 11) ? "NT" : (data?.cotermdata?.work_habits?.home_work?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -2750,7 +2878,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.work_habits?.school_on_time?.marks}
+                      
+                        {(data?.cotermdata?.work_habits?.school_on_time?.marks == 12) ? "AB" : (data?.cotermdata?.work_habits?.school_on_time?.marks == 11) ? "NT" : (data?.cotermdata?.work_habits?.school_on_time?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -2787,7 +2917,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.work_habits?.independently?.marks}
+                     
+                        {(data?.cotermdata?.work_habits?.independently?.marks == 12) ? "AB" : (data?.cotermdata?.work_habits?.independently?.marks == 11) ? "NT" : (data?.cotermdata?.work_habits?.independently?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -2824,7 +2956,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.work_habits?.book_materials?.marks}
+                     
+                        {(data?.cotermdata?.work_habits?.book_materials?.marks == 12) ? "AB" : (data?.cotermdata?.work_habits?.book_materials?.marks == 11) ? "NT" : (data?.cotermdata?.work_habits?.book_materials?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -2862,10 +2996,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.work_habits?.work_in_the_given_time
-                            ?.marks
-                        }
+                       
+                        {(data?.cotermdata?.work_habits?.work_in_the_given_time?.marks == 12) ? "AB" : (data?.cotermdata?.work_habits?.work_in_the_given_time?.marks == 11) ? "NT" : (data?.cotermdata?.work_habits?.work_in_the_given_time?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -2904,7 +3037,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.work_habits?.neatness?.marks}
+                       
+                        {(data?.cotermdata?.work_habits?.neatness?.marks == 12) ? "AB" : (data?.cotermdata?.work_habits?.neatness?.marks == 11) ? "NT" : (data?.cotermdata?.work_habits?.neatness?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -2986,7 +3121,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.worksheets?.english?.marks}
+                     
+                        {(data?.cotermdata?.worksheets?.english?.marks == 12) ? "AB" : (data?.cotermdata?.worksheets?.english?.marks == 11) ? "NT" : (data?.cotermdata?.worksheets?.english?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -3021,7 +3158,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.worksheets?.math?.marks}
+                   
+                        {(data?.cotermdata?.worksheets?.math?.marks == 12) ? "AB" : (data?.cotermdata?.worksheets?.math?.marks == 11) ? "NT" : (data?.cotermdata?.worksheets?.math?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -3057,8 +3196,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.worksheets?.shapes_color
-?.marks}
+                      
+                        {(data?.cotermdata?.worksheets?.shapes_color?.marks == 12) ? "AB" : (data?.cotermdata?.worksheets?.shapes_color?.marks == 11) ? "NT" : (data?.cotermdata?.worksheets?.shapes_color?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -3199,7 +3339,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.written_skills?.literacy?.marks}
+                     
+                        {(data?.cotermdata?.written_skills?.literacy?.marks == 12) ? "AB" : (data?.cotermdata?.written_skills?.literacy?.marks == 11) ? "NT" : (data?.cotermdata?.written_skills?.literacy?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -3234,7 +3376,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.written_skills?.numeracy?.marks}
+                     
+                        {(data?.cotermdata?.written_skills?.numeracy?.marks == 12) ? "AB" : (data?.cotermdata?.written_skills?.numeracy?.marks == 11) ? "NT" : (data?.cotermdata?.written_skills?.numeracy?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -3269,7 +3413,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.written_skills?.E_V_S?.marks}
+                    
+                        {(data?.cotermdata?.written_skills?.E_V_S?.marks == 12) ? "AB" : (data?.cotermdata?.written_skills?.E_V_S?.marks == 11) ? "NT" : (data?.cotermdata?.written_skills?.E_V_S?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -3304,7 +3450,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.written_skills?.hindi?.marks}
+                
+                        {(data?.cotermdata?.written_skills?.hindi?.marks == 12) ? "AB" : (data?.cotermdata?.written_skills?.hindi?.marks == 11) ? "NT" : (data?.cotermdata?.written_skills?.hindi?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -3340,7 +3488,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.written_skills?.kit_activity?.marks}
+                     
+                        {(data?.cotermdata?.written_skills?.kit_activity?.marks == 12) ? "AB" : (data?.cotermdata?.written_skills?.kit_activity?.marks == 11) ? "NT" : (data?.cotermdata?.written_skills?.kit_activity?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -3420,7 +3570,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.abacus?.add_subtract?.marks}
+                    
+                        {(data?.cotermdata?.abacus?.add_subtract?.marks == 12) ? "AB" : (data?.cotermdata?.abacus?.add_subtract?.marks == 11) ? "NT" : (data?.cotermdata?.abacus?.add_subtract?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -3457,7 +3609,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.abacus?.able_to_visualise?.marks}
+                     
+                        {(data?.cotermdata?.abacus?.able_to_visualise?.marks == 12) ? "AB" : (data?.cotermdata?.abacus?.able_to_visualise?.marks == 11) ? "NT" : (data?.cotermdata?.abacus?.able_to_visualise?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
@@ -3495,10 +3649,9 @@ console.log("first",isPrep)
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.abacus?.clear_with_the_concept
-                            ?.marks
-                        }
+                       
+                        {(data?.cotermdata?.abacus?.clear_with_the_concept?.marks == 12) ? "AB" : (data?.cotermdata?.abacus?.clear_with_the_concept?.marks == 11) ? "NT" : (data?.cotermdata?.abacus?.clear_with_the_concept?.marks)}   
+
                       </span>
                     </td>
                     <td className="border-2 border-gray-600 text-center relative">
