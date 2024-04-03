@@ -270,6 +270,7 @@ const calculateGradeSA3 = (SA3Total, adjustedTotalSA3) => {
 
 //term grades
 function calculateGradeterm(total) {
+  total = Math.round(total); 
   if (total >= 47 && total <= 50) {
     return 'A+';
   } else if (total >= 42 && total <= 47) {
