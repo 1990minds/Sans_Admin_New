@@ -7,6 +7,7 @@ import Footer from "../../Images/Sans Footer3-02.png";
 import dayjs from "dayjs";
 import Marksbar from "../../Images/newbarprep.png";
 import "./index.css";
+import { FaCheck } from "react-icons/fa";
 
 const PrintComponent = ({ data, termData }) => {
   console.log(data);
@@ -33,7 +34,6 @@ console.log("first",isPrep)
     data?.cotermdata?.abacus?.add_subtract?.marks,
     data?.cotermdata?.abacus?.able_to_visualise?.marks,
     data?.cotermdata?.abacus?.clear_with_the_concept?.marks,
-
     data?.cotermdata?.conversation?.sentences?.marks,
     data?.cotermdata?.conversation?.confidence?.marks,
     data?.cotermdata?.english?.listening?.marks,
@@ -3702,7 +3702,7 @@ console.log("first",isPrep)
                     Score
                   </td>
                   <td className="border-2 border-gray-600 text-center font-semibold ">
-                    {cocolastictotal}
+                    {cocolastictotal.toFixed(2)}
                   </td>
                 </tr>
                 <tr>
@@ -3756,7 +3756,21 @@ console.log("first",isPrep)
 
           <h1 className="text-sky-500 text-md font-semibold mt-2">Remarks</h1>
           <p className="text-sm">{data?.cotermdata?.remarks}</p>
-          <div className="flex justify-evenly  mt-20 gap-10 ">
+
+
+        
+        
+        <div className="flex items-center justify-center gap-3 mt-4">
+         {data?.cotermdata?.promotion_status === 'Promoted' ? <FaCheck className="text-green-500 text-2xl"/> : '' } 
+         <h1 className="text-lg font-bold uppercase">{data?.cotermdata?.promotion_status === 'Promoted' ? data?.cotermdata?.promotion_status : ''}</h1>
+         </div>
+         
+
+
+
+
+
+          <div className="flex justify-evenly  mt-5 gap-10 ">
             <div>
               <p className="">---------------------</p>
               <p className="p-0">Signature of Parent</p>

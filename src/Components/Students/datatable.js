@@ -277,7 +277,7 @@ function isIconEnabled(student, allExams) {
     matchingExams?.some((exam) => exam?.type === 'FA1') &&
     matchingExams?.some((exam) => exam?.type === 'FA2') &&
     matchingExams?.some((exam) => exam?.type === 'SA1') 
-    // &&// matchingExams?.some((exam) => exam?.type === 'TERM1');
+  //  matchingExams?.some((exam) => exam?.type === 'TERM1');
 
   return allExamsPresent;
 }
@@ -296,7 +296,7 @@ function isIconEnabled1(student, allExams) {
     classToCheck === 'Junior KG' ||
     classToCheck === 'Senior KG' ||
     classToCheck === 'Prep' ||
-    (exam.type === 'FA3' || exam?.type === 'FA4' || exam.type === 'SA2' || exam.type === 'TERM2')
+    (exam.type === 'FA3' || exam?.type === 'FA4' || exam.type === 'SA2' )
     )
     );
   });
@@ -327,7 +327,7 @@ function isIconEnabled2(student, allExams) {
   classToCheck === 'Junior KG' ||
   classToCheck === 'Senior KG' ||
   classToCheck === 'Prep' ||
-  (exam.type === 'FA5' || exam?.type === 'FA6' || exam?.type === 'SA3' || exam?.type === 'TERM3')
+  (exam.type === 'FA5' || exam?.type === 'FA6' || exam?.type === 'SA3')
   )
   );
   });
@@ -623,17 +623,6 @@ function isIconEnabled2(student, allExams) {
       }
     })()}
   </Box>
-
-
-
-
-
-
-
-
-
-
-
 
    </Modal>
   </div>

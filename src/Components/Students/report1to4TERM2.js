@@ -8,6 +8,7 @@ import Marksbar1 from "../../Images/onebar.png";
 import Footer from "../../Images/Sans Footer3-02.png";
 import dayjs from "dayjs";
 import "./index.css";
+import { FaCheck } from "react-icons/fa";
 
 
 
@@ -64,7 +65,10 @@ const validSubjectsCount = subjectKeys.reduce((count, subject) => {
 
 // Calculate the total marks for valid subjects
 const fa1Total = subjectKeys.reduce((total, subject) => {
-  return total + (data?.termData?.[subject]?.FA3?.marks !== 0 ? data?.termData?.[subject]?.FA3?.marks : 0);
+  if (data?.termData?.[subject]?.FA3?.marks !== 0 && data?.termData?.[subject]?.FA3?.marks !== 111) {
+    return total + data?.termData?.[subject]?.FA3?.marks;
+  }
+  return total;
 }, 0);
 
 // Calculate the adjusted total based on the number of valid subjects
@@ -163,8 +167,12 @@ const calculateGradefa1 = (fa1Total, adjustedTotal) => {
   }, 0);
   
   // Calculate the total marks for valid subjects
+
   const fa4Total = subjectKeysfa4.reduce((total, subject) => {
-    return total + (data?.termData?.[subject]?.FA4?.marks !== 0 ? data?.termData?.[subject]?.FA4?.marks : 0);
+    if (data?.termData?.[subject]?.FA4?.marks !== 0 && data?.termData?.[subject]?.FA4?.marks !== 111) {
+      return total + data?.termData?.[subject]?.FA4?.marks;
+    }
+    return total;
   }, 0);
   
   // Calculate the adjusted total based on the number of valid subjects
@@ -264,9 +272,14 @@ const validSubjectsCountsa2 = subjectKeyssa2.reduce((count, subject) => {
 }, 0);
 
 // Calculate the total marks for valid subjects
+
 const sa2Total = subjectKeyssa2.reduce((total, subject) => {
-  return total + (data?.termData?.[subject]?.SA2?.marks !== 0 ? data?.termData?.[subject]?.SA2?.marks : 0);
+  if (data?.termData?.[subject]?.SA2?.marks !== 0 && data?.termData?.[subject]?.SA2?.marks !== 111) {
+    return total + data?.termData?.[subject]?.SA2?.marks;
+  }
+  return total;
 }, 0);
+
 
 // Calculate the adjusted total based on the number of valid subjects
 const adjustedTotalsa2 = validSubjectsCountsa2 * 50; // Assuming each subject contributes 25 marks
@@ -347,9 +360,9 @@ const calculateGradesa2 = (sa2Total, adjustedTotalsa2) => {
       case "D":
         return "bg-[#C62026] text-white font-bold";
       case "E":
-        return "bg-[#6E2312] text-white font-bold";
+        return "bg-[#6E2311] text-white font-bold";
       default:
-        return "bg-[#6E2312] text-white font-bold";
+        return "bg-[#6E2311] text-white font-bold";
     }
   };
 
@@ -360,43 +373,43 @@ const calculateGradesa2 = (sa2Total, adjustedTotalsa2) => {
   
 
 // Calculate grades for each subject
-const english1TermTotal = data?.termData?.["English 1"]?.FA3?.marks + data?.termData?.["English 1"]?.FA4?.marks + data?.termData?.["English 1"]?.SA2?.marks;
+const english1TermTotal = (data?.termData?.["English 1"]?.FA3?.marks === 111 ? 0 : data?.termData?.["English 1"]?.FA3?.marks) + (data?.termData?.["English 1"]?.FA4?.marks === 111 ? 0 : data?.termData?.["English 1"]?.FA4?.marks) + (data?.termData?.["English 1"]?.SA2?.marks === 111 ? 0 : data?.termData?.["English 1"]?.SA2?.marks)
 const english1Grade = calculateGradeterm(english1TermTotal);
 
-const english2TermTotal = data?.termData?.["English 2"]?.FA3?.marks + data?.termData?.["English 2"]?.FA4?.marks + data?.termData?.["English 2"]?.SA2?.marks;
+const english2TermTotal = (data?.termData?.["English 2"]?.FA3?.marks === 111 ? 0 : data?.termData?.["English 2"]?.FA3?.marks) + (data?.termData?.["English 2"]?.FA4?.marks === 111 ? 0 : data?.termData?.["English 2"]?.FA4?.marks) + (data?.termData?.["English 2"]?.SA2?.marks === 111 ? 0 : data?.termData?.["English 2"]?.SA2?.marks)
 const english2Grade = calculateGradeterm(english2TermTotal);
 
-const englishReadingTermTotal = data?.termData?.["English Reading"]?.FA3?.marks + data?.termData?.["English Reading"]?.FA4?.marks + data?.termData?.["English Reading"]?.SA2?.marks;
+const englishReadingTermTotal = (data?.termData?.["English Reading"]?.FA3?.marks === 111 ? 0 : data?.termData?.["English Reading"]?.FA3?.marks) + (data?.termData?.["English Reading"]?.FA4?.marks === 111 ? 0 : data?.termData?.["English Reading"]?.FA4?.marks) + (data?.termData?.["English Reading"]?.SA2?.marks === 111 ? 0 : data?.termData?.["English Reading"]?.SA2?.marks)
 const englishReadingGrade = calculateGradeterm(englishReadingTermTotal);
 
-const englishDictatTermTotal = data?.termData?.["English Dictation"]?.FA3?.marks + data?.termData?.["English Dictation"]?.FA4?.marks + data?.termData?.["English Dictation"]?.SA2?.marks;
+const englishDictatTermTotal = (data?.termData?.["English Dictation"]?.FA3?.marks === 111 ? 0 : data?.termData?.["English Dictation"]?.FA3?.marks) + (data?.termData?.["English Dictation"]?.FA4?.marks === 111 ? 0 : data?.termData?.["English Dictation"]?.FA4?.marks) + (data?.termData?.["English Dictation"]?.SA2?.marks === 111 ? 0 : data?.termData?.["English Dictation"]?.SA2?.marks)
 const englishDictatGrade = calculateGradeterm(englishDictatTermTotal);
 
-const kannadaTermTotal = data?.termData?.["Kannada"]?.FA3?.marks + data?.termData?.["Kannada"]?.FA4?.marks + data?.termData?.["Kannada"]?.SA2?.marks;
+const kannadaTermTotal = (data?.termData?.["Kannada"]?.FA3?.marks === 111 ? 0 : data?.termData?.["Kannada"]?.FA3?.marks) + (data?.termData?.["Kannada"]?.FA4?.marks === 111 ? 0 : data?.termData?.["Kannada"]?.FA4?.marks) + (data?.termData?.["Kannada"]?.SA2?.marks === 111 ? 0 : data?.termData?.["Kannada"]?.SA2?.marks);
 const kannadaGrade = calculateGradeterm(kannadaTermTotal);
 
-const kannadaReadTermTotal = data?.termData?.["Kannada Reading"]?.FA3?.marks + data?.termData?.["Kannada Reading"]?.FA4?.marks + data?.termData?.["Kannada Reading"]?.SA2?.marks;
+const kannadaReadTermTotal = (data?.termData?.["Kannada Reading"]?.FA3?.marks === 111 ? 0 : data?.termData?.["Kannada Reading"]?.FA3?.marks) + (data?.termData?.["Kannada Reading"]?.FA4?.marks === 111 ? 0 : data?.termData?.["Kannada Reading"]?.FA4?.marks) + (data?.termData?.["Kannada Reading"]?.SA2?.marks === 111 ? 0 : data?.termData?.["Kannada Reading"]?.SA2?.marks);
 const kannadaReadGrade = calculateGradeterm(kannadaReadTermTotal);
 
-const kannadaDicatateTermTotal = data?.termData?.["Kannada Dictation"]?.FA3?.marks + data?.termData?.["Kannada Dictation"]?.FA4?.marks + data?.termData?.["Kannada Dictation"]?.SA2?.marks;
+const kannadaDicatateTermTotal = (data?.termData?.["Kannada Dictation"]?.FA3?.marks === 111 ? 0 : data?.termData?.["Kannada Dictation"]?.FA3?.marks) + (data?.termData?.["Kannada Reading"]?.FA4?.marks === 111 ? 0 : data?.termData?.["Kannada Dictation"]?.FA4?.marks) + (data?.termData?.["Kannada Dictation"]?.SA2?.marks === 111 ? 0 : data?.termData?.["Kannada Dictation"]?.SA2?.marks);
 const kannadaDictatGrade = calculateGradeterm(kannadaDicatateTermTotal);
 
-const hindiTermTotal = data?.termData?.["Hindi"]?.FA3?.marks + data?.termData?.["Hindi"]?.FA4?.marks + data?.termData?.["Hindi"]?.SA2?.marks;
+const hindiTermTotal = (data?.termData?.["Hindi"]?.FA3?.marks === 111 ? 0 : data?.termData?.["Hindi"]?.FA3?.marks) + (data?.termData?.["Hindi"]?.FA4?.marks === 111 ? 0 : data?.termData?.["Hindi"]?.FA4?.marks) + (data?.termData?.["Hindi"]?.SA2?.marks === 111 ? 0 : data?.termData?.["Hindi"]?.SA2?.marks);
 const hindiGrade = calculateGradeterm(hindiTermTotal);
 
-const hindiReadTermTotal = data?.termData?.["Hindi Reading"]?.FA3?.marks + data?.termData?.["Hindi Reading"]?.FA4?.marks + data?.termData?.["Hindi Reading"]?.SA2?.marks;
+const hindiReadTermTotal = (data?.termData?.["Hindi Reading"]?.FA3?.marks === 111 ? 0 : data?.termData?.["Hindi Reading"]?.FA3?.marks) + (data?.termData?.["Hindi Reading"]?.FA4?.marks === 111 ? 0 : data?.termData?.["Hindi Reading"]?.FA4?.marks) + (data?.termData?.["Hindi Reading"]?.SA2?.marks === 111 ? 0 : data?.termData?.["Hindi Reading"]?.SA2?.marks);
 const hindiReadGrade = calculateGradeterm(hindiReadTermTotal);
 
-const hindiDictTermTotal = data?.termData?.["Hindi Dictation"]?.FA3?.marks + data?.termData?.["Hindi Dictation"]?.FA4?.marks + data?.termData?.["Hindi Dictation"]?.SA2?.marks;
+const hindiDictTermTotal = (data?.termData?.["Hindi Dictation"]?.FA3?.marks === 111 ? 0 : data?.termData?.["Hindi Dictation"]?.FA3?.marks) + (data?.termData?.["Hindi Dictation"]?.FA4?.marks === 111 ? 0 : data?.termData?.["Hindi Dictation"]?.FA4?.marks) + (data?.termData?.["Hindi Dictation"]?.SA2?.marks === 111 ? 0 : data?.termData?.["Hindi Dictation"]?.SA2?.marks);
 const hindiDictGrade = calculateGradeterm(hindiDictTermTotal);
 
-const mathTermTotal = data?.termData?.["Mathematics"]?.FA3?.marks + data?.termData?.["Mathematics"]?.FA4?.marks + data?.termData?.["Mathematics"]?.SA2?.marks;
+const mathTermTotal = (data?.termData?.["Mathematics"]?.FA3?.marks === 111 ? 0 : data?.termData?.["Mathematics"]?.FA3?.marks) + (data?.termData?.["Mathematics"]?.FA4?.marks === 111 ? 0 : data?.termData?.["Mathematics"]?.FA4?.marks) + (data?.termData?.["Mathematics"]?.SA2?.marks === 111 ? 0 : data?.termData?.["Mathematics"]?.SA2?.marks);
 const mathGrade = calculateGradeterm(mathTermTotal);
 
-const evsTermTotal = data?.termData?.["E V S / General Science"]?.FA3?.marks + data?.termData?.["E V S / General Science"]?.FA4?.marks + data?.termData?.["E V S / General Science"]?.SA2?.marks;
+const evsTermTotal = (data?.termData?.["E V S / General Science"]?.FA3?.marks === 111 ? 0 : data?.termData?.["E V S / General Science"]?.FA3?.marks) + (data?.termData?.["E V S / General Science"]?.FA4?.marks === 111 ? 0 : data?.termData?.["E V S / General Science"]?.FA4?.marks) + (data?.termData?.["E V S / General Science"]?.SA2?.marks === 111 ? 0 : data?.termData?.["E V S / General Science"]?.SA2?.marks);
 const evsGrade = calculateGradeterm(evsTermTotal);
 
-const socialTermTotal = data?.termData?.["Social Science"]?.FA3?.marks + data?.termData?.["Social Science"]?.FA4?.marks + data?.termData?.["Social Science"]?.SA2?.marks;
+const socialTermTotal = (data?.termData?.["Social Science"]?.FA3?.marks === 111 ? 0 : data?.termData?.["Social Science"]?.FA3?.marks) + (data?.termData?.["Social Science"]?.FA4?.marks === 111 ? 0 : data?.termData?.["Social Science"]?.FA4?.marks) + (data?.termData?.["Social Science"]?.SA2?.marks === 111 ? 0 : data?.termData?.["Social Science"]?.SA2?.marks);
 const socialGrade = calculateGradeterm(socialTermTotal);
 
 
@@ -416,29 +429,67 @@ const socialGrade = calculateGradeterm(socialTermTotal);
     evsTermTotal +
    socialTermTotal
 
-  const perterm1 = ((term1Total / 1300) * 100).toFixed(2);
 
-  const calculateGradeterm1 = (term1Total) => {
-    if (term1Total >= 1170) {
-      return "A+";
-    } else if (term1Total >= 1040) {
-      return "A";
-    } else if (term1Total >= 910) {
-      return "B+";
-    } else if (term1Total >= 780) {
-      return "B";
-    } else if (term1Total >= 650) {
-      return "C+";
-    } else if (term1Total >= 520) {
-      return "C";
-    } else if (term1Total >= 390) {
-      return "D+";
-    } else if (term1Total >= 260) {
-      return "D";
-    } else {
-      return "E";
-    }
-  };
+
+
+   let perterm1;
+   let calculateGradeterm1;
+
+   console.log(data?.student?.joining_details?.class?.class_name)
+
+   if(data?.student?.joining_details?.class?.class_name === 'Grade 1' || data?.student?.joining_details?.class?.class_name === 'Grade 2') {
+    
+  perterm1 = ((term1Total / 1200) * 100).toFixed(2);
+  console.log(perterm1)
+  calculateGradeterm1 = (term1Total) => {
+     if (term1Total >= 1066.71) {
+     return "A+";
+   } else if (term1Total >= 933.38) {
+     return "A";
+   } else if (term1Total >= 800) {
+     return "B+";
+   } else if (term1Total >= 666.70) {
+     return "B";
+   } else if (term1Total >= 533.35) {
+     return "C+";
+   } else if (term1Total >= 400) {
+     return "C";
+   } else if (term1Total >= 266.67) {
+     return "D+";
+   } else if (term1Total >= 133.34) {
+     return "D";
+   } else  {
+     return ;
+   }
+ };
+
+   } else {
+     perterm1 = ((term1Total / 1300) * 100).toFixed(2);
+
+     calculateGradeterm1 = (term1Total) => {
+         if (term1Total >= 1155.59) {
+         return "A+";
+       } else if (term1Total >= 1011.14) {
+         return "A";
+       } else if (term1Total >= 866.69) {
+         return "B+";
+       } else if (term1Total >= 722.24) {
+         return "B";
+       } else if (term1Total >= 577.79) {
+         return "C+";
+       } else if (term1Total >= 433.34) {
+         return "C";
+       } else if (term1Total >= 288.89) {
+         return "D+";
+       } else if (term1Total >= 144.45) {
+         return "D";
+       } else {
+         return "E";
+       }
+     };
+
+
+   }
 
   const gradeterm1 = calculateGradeterm1(term1Total);
 
@@ -446,18 +497,26 @@ const socialGrade = calculateGradeterm(socialTermTotal);
   //GRADE COLOR FOR CO-SCHOLASTIC
   const getGradeColor = (grade) => {
     switch (grade) {
-      case "A":
+      case "A+":
         return "bg-[#C756A1] text-white font-bold";
-      case "B":
+      case "A":
         return "bg-[#6C8CC8] text-white font-bold";
+      case "B+":
+        return "bg-[#00A651] text-white font-bold";
+      case "B":
+        return "bg-[#00AEEF] text-white font-bold";
+      case "C+":
+        return "bg-[#A6CE39] text-white font-bold";
       case "C":
-        return "bg-[#14A850] text-white font-bold";
-      case "D":
-        return "bg-[#D6CA6F] text-white font-bold";
-      case "E":
+        return "bg-[#D7CB70] text-white font-bold";
+      case "D+":
         return "bg-[#F5821F] text-white font-bold";
+      case "D":
+        return "bg-[#C62026] text-white font-bold";
+      case "E":
+        return "bg-[#6E2311] text-white font-bold";
       default:
-        return "bg-white text-black font-bold";
+        return "bg-[#6E2311] text-white font-bold";
     }
   };
 
@@ -482,9 +541,9 @@ const socialGrade = calculateGradeterm(socialTermTotal);
       case "D":
         return "bg-[#C62026] text-white font-bold";
       case "E":
-        return "bg-[#6E2312] text-white font-bold";
+        return "bg-[#6E2311] text-white font-bold";
       default:
-        return "bg-[#6E2312] text-white font-bold";
+        return "bg-[#6E2311] text-white font-bold";
     }
   };
 
@@ -513,7 +572,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
       case "D":
         return "bg-[#C62026] text-white font-bold";
       case "E":
-        return "bg-[#6E2312] text-white font-bold";
+        return "bg-[#6E2311] text-white font-bold";
       default:
         return "bg-white text-black font-bold";
     }
@@ -728,7 +787,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English 1"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["English 1"]?.FA3?.marks}
+                      {data?.termData?.["English 1"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["English 1"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["English 1"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -763,7 +822,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English 1"]?.FA4?.marks === 0 ?"NT" : data?.termData?.["English 1"]?.FA4?.marks }
+                      {data?.termData?.["English 1"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["English 1"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["English 1"]?.FA4?.marks }
                     </span>
                   </td>
 
@@ -798,7 +857,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English 1"]?.SA2?.marks === 0? "NT" : data?.termData?.["English 1"]?.SA2?.marks}
+                      {data?.termData?.["English 1"]?.SA2?.marks === 0 ? "NT" : data?.termData?.["English 1"]?.SA2?.marks === 111 ? "AB" : data?.termData?.["English 1"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -834,7 +893,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["English 1"]?.TERM1?.marks} */}
-                      {english1TermTotal ===0 ? "NT" : english1TermTotal}
+                      {english1TermTotal ===0 ? "NT" : english1TermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -876,7 +935,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English 2"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["English 2"]?.FA3?.marks}
+                      {data?.termData?.["English 2"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["English 2"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["English 2"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -911,7 +970,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English 2"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["English 2"]?.FA4?.marks}
+                      {data?.termData?.["English 2"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["English 2"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["English 2"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -945,7 +1004,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English 2"]?.SA2?.marks ===0 ? "NT" : data?.termData?.["English 2"]?.SA2?.marks}
+                      {data?.termData?.["English 2"]?.SA2?.marks === 0 ? "NT" : data?.termData?.["English 2"]?.SA2?.marks === 111 ? "AB" : data?.termData?.["English 2"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -980,7 +1039,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["English 2"]?.TERM1?.marks} */}
-                      {english2TermTotal ===0 ? "NT" : english2TermTotal}
+                      {english2TermTotal ===0 ? "NT" : english2TermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -1021,7 +1080,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English Reading"]?.FA3?.marks ===0 ? "NT": data?.termData?.["English Reading"]?.FA3?.marks}
+                      {data?.termData?.["English Reading"]?.FA3?.marks === 0 ? "NT": data?.termData?.["English Reading"]?.FA3?.marks === 111 ? "AB": data?.termData?.["English Reading"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -1056,7 +1115,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English Reading"]?.FA4?.marks ===0 ? "NT":data?.termData?.["English Reading"]?.FA4?.marks}
+                      {data?.termData?.["English Reading"]?.FA4?.marks === 0 ? "NT": data?.termData?.["English Reading"]?.FA4?.marks === 111 ? "AB": data?.termData?.["English Reading"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -1090,7 +1149,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English Reading"]?.SA2?.marks === 0 ?"NT": data?.termData?.["English Reading"]?.SA2?.marks}
+                      {data?.termData?.["English Reading"]?.SA2?.marks === 0 ? "NT": data?.termData?.["English Reading"]?.SA2?.marks === 111 ? "AB": data?.termData?.["English Reading"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -1125,7 +1184,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["English Reading"]?.TERM1?.marks} */}
-                      {englishReadingTermTotal === 0 ? "NT" : englishReadingTermTotal}
+                      {englishReadingTermTotal === 0 ? "NT" : englishReadingTermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -1166,7 +1225,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English Dictation"]?.FA3?.marks ===0 ? "NT" : data?.termData?.["English Dictation"]?.FA3?.marks}
+                      { data?.termData?.["English Dictation"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["English Dictation"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["English Dictation"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -1201,7 +1260,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English Dictation"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["English Dictation"]?.FA4?.marks}
+                      {data?.termData?.["English Dictation"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["English Dictation"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["English Dictation"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -1235,7 +1294,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["English Dictation"]?.SA2?.marks === 0 ? "NT" : data?.termData?.["English Dictation"]?.SA2?.marks}
+                      {data?.termData?.["English Dictation"]?.SA2?.marks === 0 ? "NT" : data?.termData?.["English Dictation"]?.SA2?.marks === 111 ? "AB" : data?.termData?.["English Dictation"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -1270,7 +1329,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["English Dictation"]?.TERM1?.marks} */}
-                      {englishDictatTermTotal ===0 ? "NT" : englishDictatTermTotal}
+                      {englishDictatTermTotal ===0 ? "NT" : englishDictatTermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -1313,7 +1372,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Kannada"]?.FA3?.marks ===0 ? "NT" : data?.termData?.["Kannada"]?.FA3?.marks}
+                      {data?.termData?.["Kannada"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["Kannada"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["Kannada"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -1352,7 +1411,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Kannada"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["Kannada"]?.FA4?.marks}
+                      {data?.termData?.["Kannada"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["Kannada"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["Kannada"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -1387,7 +1446,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Kannada"]?.SA2?.marks ===0 ? "NT" : data?.termData?.["Kannada"]?.SA2?.marks}
+                      {data?.termData?.["Kannada"]?.SA2?.marks === 0 ? "NT" : data?.termData?.["Kannada"]?.SA2?.marks === 111 ? "AB" : data?.termData?.["Kannada"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -1423,7 +1482,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["Kannada"]?.TERM1?.marks} */}
-                      {kannadaTermTotal === 0 ? "NT" : kannadaTermTotal}
+                      {kannadaTermTotal === 0 ? "NT" : kannadaTermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -1464,7 +1523,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Kannada Reading"]?.FA3?.marks ===0 ? "NT" : data?.termData?.["Kannada Reading"]?.FA3?.marks}
+                      {data?.termData?.["Kannada Reading"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["Kannada Reading"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["Kannada Reading"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -1499,7 +1558,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Kannada Reading"]?.FA4?.marks ===0 ? "NT" : data?.termData?.["Kannada Reading"]?.FA4?.marks}
+                      {data?.termData?.["Kannada Reading"]?.FA4?.marks ===0 ? "NT" : data?.termData?.["Kannada Reading"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["Kannada Reading"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -1534,7 +1593,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Kannada Reading"]?.SA2?.marks ===0 ? 'NT' : data?.termData?.["Kannada Reading"]?.SA2?.marks}
+                      {data?.termData?.["Kannada Reading"]?.SA2?.marks === 0 ? 'NT' : data?.termData?.["Kannada Reading"]?.SA2?.marks === 111 ? 'AB' : data?.termData?.["Kannada Reading"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -1570,7 +1629,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["Kannada Reading"]?.TERM1?.marks} */}
-                      {kannadaReadTermTotal ===0 ? "NT" : kannadaReadTermTotal }
+                      {kannadaReadTermTotal ===0 ? "NT" : kannadaReadTermTotal.toFixed(2) }
 
                     </span>
                   </td>
@@ -1613,7 +1672,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Kannada Dictation"]?.FA3?.marks ===0 ? "NT" : data?.termData?.["Kannada Dictation"]?.FA3?.marks}
+                      {data?.termData?.["Kannada Dictation"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["Kannada Dictation"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["Kannada Dictation"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -1648,7 +1707,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Kannada Dictation"]?.FA4?.marks ===0 ? "NT" : data?.termData?.["Kannada Dictation"]?.FA4?.marks}
+                      {data?.termData?.["Kannada Dictation"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["Kannada Dictation"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["Kannada Dictation"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -1683,7 +1742,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Kannada Dictation"]?.SA2?.marks ===0? "NT" : data?.termData?.["Kannada Dictation"]?.SA2?.marks}
+                      {data?.termData?.["Kannada Dictation"]?.SA2?.marks === 0 ? "NT" : data?.termData?.["Kannada Dictation"]?.SA2?.marks === 111 ? "AB" : data?.termData?.["Kannada Dictation"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -1719,7 +1778,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["Kannada Dictation"]?.TERM1?.marks} */}
-                      {kannadaDicatateTermTotal === 0 ? "NT" : kannadaDicatateTermTotal}
+                      {kannadaDicatateTermTotal === 0 ? "NT" : kannadaDicatateTermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -1760,7 +1819,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Hindi"]?.FA3?.marks ===0 ? "NT" : data?.termData?.["Hindi"]?.FA3?.marks}
+                      {data?.termData?.["Hindi"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["Hindi"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["Hindi"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -1795,7 +1854,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Hindi"]?.FA4?.marks ===0 ? "NT" : data?.termData?.["Hindi"]?.FA4?.marks}
+                      {data?.termData?.["Hindi"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["Hindi"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["Hindi"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -1830,7 +1889,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Hindi"]?.SA2?.marks ===0 ? "NT" : data?.termData?.["Hindi"]?.SA2?.marks}
+                      {data?.termData?.["Hindi"]?.SA2?.marks === 0 ? "NT" : data?.termData?.["Hindi"]?.SA2?.marks === 111 ? "AB" : data?.termData?.["Hindi"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -1866,7 +1925,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["Hindi"]?.TERM1?.marks} */}
-                      {hindiTermTotal ===0 ? "NT" : hindiTermTotal}
+                      {hindiTermTotal ===0 ? "NT" : hindiTermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -1907,7 +1966,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Hindi Reading"]?.FA3?.marks ===0 ? "NT" : data?.termData?.["Hindi Reading"]?.FA3?.marks}
+                      {data?.termData?.["Hindi Reading"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["Hindi Reading"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["Hindi Reading"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -1942,7 +2001,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Hindi Reading"]?.FA4?.marks ===0 ? "NT" : data?.termData?.["Hindi Reading"]?.FA4?.marks}
+                      {data?.termData?.["Hindi Reading"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["Hindi Reading"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["Hindi Reading"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -1977,7 +2036,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Hindi Reading"]?.SA2?.marks ===0 ? "NT" : data?.termData?.["Hindi Reading"]?.SA2?.marks}
+                      {data?.termData?.["Hindi Reading"]?.SA2?.marks === 0 ? "NT" : data?.termData?.["Hindi Reading"]?.SA2?.marks === 111 ? "AB" : data?.termData?.["Hindi Reading"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -2013,7 +2072,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["Hindi Reading"]?.TERM1?.marks} */}
-                      {hindiReadTermTotal ===0 ? "NT" : hindiReadTermTotal}
+                      {hindiReadTermTotal ===0 ? "NT" : hindiReadTermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -2054,7 +2113,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Hindi Dictation"]?.FA3?.marks ===0 ? "NT" : data?.termData?.["Hindi Dictation"]?.FA3?.marks}
+                      {data?.termData?.["Hindi Dictation"]?.FA3?.marks ===0 ? "NT" : data?.termData?.["Hindi Dictation"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["Hindi Dictation"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -2089,7 +2148,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Hindi Dictation"]?.FA4?.marks ===0 ? "NT" : data?.termData?.["Hindi Dictation"]?.FA4?.marks}
+                      {data?.termData?.["Hindi Dictation"]?.FA4?.marks ===0 ? "NT" : data?.termData?.["Hindi Dictation"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["Hindi Dictation"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -2124,7 +2183,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Hindi Dictation"]?.SA2?.marks ===0 ? "NT" : data?.termData?.["Hindi Dictation"]?.SA2?.marks}
+                      {data?.termData?.["Hindi Dictation"]?.SA2?.marks ===0 ? "NT" : data?.termData?.["Hindi Dictation"]?.SA2?.marks === 111 ? "AB" : data?.termData?.["Hindi Dictation"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -2160,7 +2219,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["Hindi Dictation"]?.TERM1?.marks} */}
-                      {hindiDictTermTotal ===0 ? "NT" : hindiDictTermTotal}
+                      {hindiDictTermTotal ===0 ? "NT" : hindiDictTermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -2201,7 +2260,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Mathematics"]?.FA3?.marks ===0 ? "NT" : data?.termData?.["Mathematics"]?.FA3?.marks}
+                      {data?.termData?.["Mathematics"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["Mathematics"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["Mathematics"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -2236,7 +2295,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Mathematics"]?.FA4?.marks ===0 ? "NT" : data?.termData?.["Mathematics"]?.FA4?.marks}
+                      {data?.termData?.["Mathematics"]?.FA4?.marks ===0 ? "NT" : data?.termData?.["Mathematics"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["Mathematics"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -2271,7 +2330,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Mathematics"]?.SA2?.marks ===0 ? "NT" : data?.termData?.["Mathematics"]?.SA2?.marks}
+                      {data?.termData?.["Mathematics"]?.SA2?.marks === 0 ? "NT" : data?.termData?.["Mathematics"]?.SA2?.marks === 111 ? "AB" : data?.termData?.["Mathematics"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -2307,7 +2366,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["Mathematics"]?.TERM1?.marks} */}
-                      {mathTermTotal ===0 ? "NT" : mathTermTotal}
+                      {mathTermTotal ===0 ? "NT" : mathTermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -2348,7 +2407,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["E V S / General Science"]?.FA3?.marks ===0 ? "NT" : data?.termData?.["E V S / General Science"]?.FA3?.marks}
+                      {data?.termData?.["E V S / General Science"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["E V S / General Science"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["E V S / General Science"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -2383,7 +2442,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["E V S / General Science"]?.FA4?.marks ===0 ? "NT" : data?.termData?.["E V S / General Science"]?.FA4?.marks}
+                      {data?.termData?.["E V S / General Science"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["E V S / General Science"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["E V S / General Science"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -2418,7 +2477,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["E V S / General Science"]?.SA2?.marks ===0 ? "NT" : data?.termData?.["E V S / General Science"]?.SA2?.marks}
+                      {data?.termData?.["E V S / General Science"]?.SA2?.marks === 0 ? "NT" : data?.termData?.["E V S / General Science"]?.SA2?.marks === 111 ? "AB" : data?.termData?.["E V S / General Science"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -2457,7 +2516,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         data?.termData?.["E V S / General Science"]?.TERM1
                           ?.marks
                       } */}
-                      {evsTermTotal  ===0 ? "NT" : evsTermTotal}
+                      {evsTermTotal  ===0 ? "NT" : evsTermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -2500,7 +2559,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Social Science"]?.FA3?.marks ===0 ? "NT" : data?.termData?.["Social Science"]?.FA3?.marks}
+                      {data?.termData?.["Social Science"]?.FA3?.marks === 0 ? "NT" : data?.termData?.["Social Science"]?.FA3?.marks === 111 ? "AB" : data?.termData?.["Social Science"]?.FA3?.marks}
                     </span>
                   </td>
 
@@ -2535,7 +2594,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Social Science"]?.FA4?.marks ===0 ? "NT" : data?.termData?.["Social Science"]?.FA4?.marks}
+                      {data?.termData?.["Social Science"]?.FA4?.marks === 0 ? "NT" : data?.termData?.["Social Science"]?.FA4?.marks === 111 ? "AB" : data?.termData?.["Social Science"]?.FA4?.marks}
                     </span>
                   </td>
 
@@ -2570,7 +2629,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                       }}
                     ></div>
                     <span className="relative z-10 font-bold text-white">
-                      {data?.termData?.["Social Science"]?.SA2?.marks ===0 ? "NT"  : data?.termData?.["Social Science"]?.SA2?.marks}
+                      {data?.termData?.["Social Science"]?.SA2?.marks === 0 ? "NT"  : data?.termData?.["Social Science"]?.SA2?.marks === 111 ? "AB"  : data?.termData?.["Social Science"]?.SA2?.marks}
                     </span>
                   </td>
 
@@ -2606,7 +2665,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     ></div>
                     <span className="relative z-10 font-bold text-white">
                       {/* {data?.termData?.["Social Science"]?.TERM1?.marks} */}
-                      {socialTermTotal ===0 ? "NT" : socialTermTotal}
+                      {socialTermTotal ===0 ? "NT" : socialTermTotal.toFixed(2)}
 
                     </span>
                   </td>
@@ -2656,16 +2715,16 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                     Score
                   </td>
                   <td className="border-2 border-gray-600 text-center ">
-                    {fa1Total}
+                    {fa1Total.toFixed(2)}
                   </td>
                   <td className="border-2 border-gray-600 text-center ">
-                    {fa4Total}
+                    {fa4Total.toFixed(2)}
                   </td>
                   <td className="border-2 border-gray-600 text-center ">
-                    {sa2Total}
+                    {sa2Total.toFixed(2)}
                   </td>
                   <td className="border-2 border-gray-600 text-center ">
-                    {term1Total}
+                    {term1Total.toFixed(2)}
                   </td>
                 </tr>
 
@@ -2849,7 +2908,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.reading?.vocabulary?.grade}
+                      {data?.cotermdata?.reading?.vocabulary?.marks === 12 ? 'AB' : data?.cotermdata?.reading?.vocabulary?.marks === 11 ? 'NT' : data?.cotermdata?.reading?.vocabulary?.grade }
                       </span>
                     </td>
                   </tr>
@@ -2870,7 +2929,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.reading?.what_to_read?.grade}
+                      {data?.cotermdata?.reading?.what_to_read?.marks === 12 ? 'AB' : data?.cotermdata?.reading?.what_to_read?.marks === 11 ? 'NT' : data?.cotermdata?.reading?.what_to_read?.grade }
                       </span>
                     </td>
                   </tr>
@@ -2891,7 +2950,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.reading?.reads_fluently?.grade}
+                      {data?.cotermdata?.reading?.reads_fluently?.marks === 12 ? 'AB' : data?.cotermdata?.reading?.reads_fluently?.marks === 11 ? 'NT' : data?.cotermdata?.reading?.reads_fluently?.grade }
                       </span>
                     </td>
                   </tr>
@@ -2912,7 +2971,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.reading?.phonic_skills?.grade}
+                      {data?.cotermdata?.reading?.phonic_skills?.marks === 12 ? 'AB' : data?.cotermdata?.reading?.phonic_skills?.marks === 11 ? 'NT' : data?.cotermdata?.reading?.phonic_skills?.grade }
                       </span>
                     </td>
                   </tr>
@@ -2961,10 +3020,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.work_skills?.listens_attentively
-                            ?.grade
-                        }
+                      {data?.cotermdata?.work_skills?.listens_attentively?.marks === 12 ? 'AB' : data?.cotermdata?.work_skills?.listens_attentively?.marks === 11 ? 'NT' : data?.cotermdata?.work_skills?.listens_attentively?.grade }
                       </span>
                     </td>
                   </tr>
@@ -2986,10 +3042,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.work_skills?.follows_directions
-                            ?.grade
-                        }
+                      {data?.cotermdata?.work_skills?.follows_directions?.marks === 12 ? 'AB' : data?.cotermdata?.work_skills?.follows_directions?.marks === 11 ? 'NT' : data?.cotermdata?.work_skills?.follows_directions?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3011,10 +3064,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.work_skills?.Work_well_independently
-                            ?.grade
-                        }
+                      {data?.cotermdata?.work_skills?.Work_well_independently?.marks === 12 ? 'AB' : data?.cotermdata?.work_skills?.Work_well_independently?.marks === 11 ? 'NT' : data?.cotermdata?.work_skills?.Work_well_independently?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3036,10 +3086,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.work_skills?.assignments_on_time
-                            ?.grade
-                        }
+                      {data?.cotermdata?.work_skills?.assignments_on_time?.marks === 12 ? 'AB' : data?.cotermdata?.work_skills?.assignments_on_time?.marks === 11 ? 'NT' : data?.cotermdata?.work_skills?.assignments_on_time?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3060,7 +3107,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.work_skills?.does_work_neatly?.grade}
+                      {data?.cotermdata?.work_skills?.does_work_neatly?.marks === 12 ? 'AB' : data?.cotermdata?.work_skills?.does_work_neatly?.marks === 11 ? 'NT' : data?.cotermdata?.work_skills?.does_work_neatly?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3103,7 +3150,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.specials?.computer?.grade}
+                      {data?.cotermdata?.specials?.computer?.marks === 12 ? 'AB' : data?.cotermdata?.specials?.computer?.marks === 11 ? 'NT' : data?.cotermdata?.specials?.computer?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3124,7 +3171,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.specials?.moral_science?.grade}
+                      {data?.cotermdata?.specials?.moral_science?.marks === 12 ? 'AB' : data?.cotermdata?.specials?.moral_science?.marks === 11 ? 'NT' : data?.cotermdata?.specials?.moral_science?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3145,7 +3192,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.specials?.physical_education?.grade}
+                      {data?.cotermdata?.specials?.physical_education?.marks === 12 ? 'AB' : data?.cotermdata?.specials?.physical_education?.marks === 11 ? 'NT' : data?.cotermdata?.specials?.physical_education?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3166,7 +3213,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.specials?.general_knowledge?.grade}
+                      {data?.cotermdata?.specials?.general_knowledge?.marks === 12 ? 'AB' : data?.cotermdata?.specials?.general_knowledge?.marks === 11 ? 'NT' : data?.cotermdata?.specials?.general_knowledge?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3227,7 +3274,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.project_activity?.English?.grade}
+                      {data?.cotermdata?.project_activity?.English?.marks === 12 ? 'AB' : data?.cotermdata?.project_activity?.English?.marks === 11 ? 'NT' : data?.cotermdata?.project_activity?.English?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3246,7 +3293,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.project_activity?.Math?.grade}
+                      {data?.cotermdata?.project_activity?.Math?.marks === 12 ? 'AB' : data?.cotermdata?.project_activity?.Math?.marks === 11 ? 'NT' : data?.cotermdata?.project_activity?.Math?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3265,7 +3312,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.project_activity?.E_V_S?.grade}
+                      {data?.cotermdata?.project_activity?.E_V_S?.marks === 12 ? 'AB' : data?.cotermdata?.project_activity?.E_V_S?.marks === 11 ? 'NT' : data?.cotermdata?.project_activity?.E_V_S?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3287,10 +3334,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.project_activity
-                            ?.events_and_celebrations?.grade
-                        }
+                      {data?.cotermdata?.project_activity?.events_and_celebrations?.marks === 12 ? 'AB' : data?.cotermdata?.project_activity?.events_and_celebrations?.marks === 11 ? 'NT' : data?.cotermdata?.project_activity?.events_and_celebrations?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3353,7 +3397,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.spelling?.words_correctly?.grade}
+                      {data?.cotermdata?.spelling?.words_correctly?.marks === 12 ? 'AB' : data?.cotermdata?.spelling?.words_correctly?.marks === 11 ? 'NT' : data?.cotermdata?.spelling?.words_correctly?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3374,7 +3418,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.spelling?.spelling_skills?.grade}
+                      {data?.cotermdata?.spelling?.spelling_skills?.marks === 12 ? 'AB' : data?.cotermdata?.spelling?.spelling_skills?.marks === 11 ? 'NT' : data?.cotermdata?.spelling?.spelling_skills?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3418,7 +3462,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.social_skills?.school_rules?.grade}
+                      {data?.cotermdata?.social_skills?.school_rules?.marks === 12 ? 'AB' : data?.cotermdata?.social_skills?.school_rules?.marks === 11 ? 'NT' : data?.cotermdata?.social_skills?.school_rules?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3439,7 +3483,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.social_skills?.self_control?.grade}
+                      {data?.cotermdata?.social_skills?.self_control?.marks === 12 ? 'AB' : data?.cotermdata?.social_skills?.self_control?.marks === 11 ? 'NT' : data?.cotermdata?.social_skills?.self_control?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3461,10 +3505,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.social_skills
-                            ?.respect_to_self_others?.grade
-                        }
+                      {data?.cotermdata?.social_skills?.respect_to_self_others?.marks === 12 ? 'AB' : data?.cotermdata?.social_skills?.respect_to_self_others?.marks === 11 ? 'NT' : data?.cotermdata?.social_skills?.respect_to_self_others?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3513,10 +3554,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.written_expression
-                            ?.letters_correctly?.grade
-                        }
+                      {data?.cotermdata?.written_expression?.letters_correctly?.marks === 12 ? 'AB' : data?.cotermdata?.written_expression?.letters_correctly?.marks === 11 ? 'NT' : data?.cotermdata?.written_expression?.letters_correctly?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3538,10 +3576,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.written_expression
-                            ?.punctuation_correctly?.grade
-                        }
+                      {data?.cotermdata?.written_expression?.punctuation_correctly?.marks === 12 ? 'AB' : data?.cotermdata?.written_expression?.punctuation_correctly?.marks === 11 ? 'NT' : data?.cotermdata?.written_expression?.punctuation_correctly?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3563,10 +3598,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.written_expression
-                            ?.complete_sentences?.grade
-                        }
+                      {data?.cotermdata?.written_expression?.complete_sentences?.marks === 12 ? 'AB' : data?.cotermdata?.written_expression?.complete_sentences?.marks === 11 ? 'NT' : data?.cotermdata?.written_expression?.complete_sentences?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3615,10 +3647,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {
-                          data?.cotermdata?.Abacus?.Clear_with_the_concept
-                            ?.grade
-                        }
+                      {data?.cotermdata?.Abacus?.Clear_with_the_concept?.marks === 12 ? 'AB' : data?.cotermdata?.Abacus?.Clear_with_the_concept?.marks === 11 ? 'NT' : data?.cotermdata?.Abacus?.Clear_with_the_concept?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3639,7 +3668,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.Abacus?.able_to_add_subtract?.grade}
+                      {data?.cotermdata?.Abacus?.able_to_add_subtract?.marks === 12 ? 'AB' : data?.cotermdata?.Abacus?.able_to_add_subtract?.marks === 11 ? 'NT' : data?.cotermdata?.Abacus?.able_to_add_subtract?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3660,7 +3689,7 @@ const socialGrade = calculateGradeterm(socialTermTotal);
                         }}
                       ></div>
                       <span className="relative z-10 font-bold text-white">
-                        {data?.cotermdata?.Abacus?.able_to_visualise?.grade}
+                      {data?.cotermdata?.Abacus?.able_to_visualise?.marks === 12 ? 'AB' : data?.cotermdata?.Abacus?.able_to_visualise?.marks === 11 ? 'NT' : data?.cotermdata?.Abacus?.able_to_visualise?.grade }
                       </span>
                     </td>
                   </tr>
@@ -3686,6 +3715,15 @@ const socialGrade = calculateGradeterm(socialTermTotal);
             </div>
           </div>
         </div>
+
+        <div className="flex items-center justify-center gap-3 mt-4">
+         {data?.cotermdata?.promotion_status === 'Promoted' ? <FaCheck className="text-green-500 text-2xl"/> : '' } 
+         <h1 className="text-lg font-bold uppercase">{data?.cotermdata?.promotion_status === 'Promoted' ? data?.cotermdata?.promotion_status : ''}</h1>
+         </div>
+
+
+
+
         <div className="mx-4 mt-6">
           <div className="flex justify-evenly  mt-20 gap-10 ">
             <div>
