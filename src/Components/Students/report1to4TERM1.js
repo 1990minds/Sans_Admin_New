@@ -333,6 +333,7 @@ const calculateGradesa1 = (sa1Total, adjustedTotalsa1) => {
 
   
   function calculateGradeterm(total) {
+    total = Math.round(total); 
     if (total >= 91 && total <= 100) {
       return 'A+';
     } else if (total >= 81 && total <= 90) {
